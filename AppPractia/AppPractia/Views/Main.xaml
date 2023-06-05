@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPractia.Views.Main"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="End">
+
+                    <Image 
+                       x:Name="ImgProfile"
+                       Source="userIcon.png" 
+                       Margin="0,25,25,0"
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       xct:IconTintColorEffect.TintColor="#1c0d5e"
+                       HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center"
+                       >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                        Tapped="TapGestureRecognizer_Tapped"
+                        NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <Label 
+                    x:Name="TxtUserWelcome"
+                    Text="Bienvenido Inicial"
+                    VerticalOptions="Start" 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand" 
+                    Margin="50,80,50,0"
+                    FontAttributes="Bold"
+                    TextColor="#1c0d5e"/>
+
+
+                <Label 
+                    Text="Menu Inicial"
+                    VerticalOptions="Start" 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand" 
+                    Margin="50,50,50,0"
+                    TextColor="#1c0d5e"/>
+
+
+                <Button x:Name="BtnUsers" HeightRequest="80" Text="Usuarios" Margin="80,30,80,0" CornerRadius="20" Clicked="BtnUsers_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
+                <Button x:Name="BtnProyects" HeightRequest="80" Text="Construciones" Margin="80,10,80,0" CornerRadius="20" Clicked="BtnProyects_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
+                <Button x:Name="BtnLocations" HeightRequest="80" Text="Localizaciones" Margin="80,10,80,0" CornerRadius="20" Clicked="BtnLocations_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
+          
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

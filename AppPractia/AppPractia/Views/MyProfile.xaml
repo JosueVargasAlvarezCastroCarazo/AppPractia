@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPractia.Views.MyProfile"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Image Source="userIcon.png" 
+                       Margin="50,100,50,0"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       xct:IconTintColorEffect.TintColor="#1c0d5e"/>
+
+                <Label 
+                    Text="Mi Perfil"
+                    FontSize="Large"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="CenterAndExpand" 
+                    Margin="50,20,50,0" 
+                    FontAttributes="Bold"
+                    TextColor="#1c0d5e"/>
+
+                <Label Text="Identificación:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtIdentification" Placeholder="identificación" Keyboard="Numeric" Margin="50,0,50,0" IsReadOnly="True" MaxLength="9"/>
+
+                <Label Text="Email:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtEmail" Placeholder="Email" Margin="50,0,50,0" Keyboard="Email" />
+
+                <Label Text="Nombre:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtName" Placeholder="Nombre" Margin="50,0,50,0"/>
+
+                <Label Text="Teléfono:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtPhoneNumber" Placeholder="Teléfono" Margin="50,0,50,0" Keyboard="Numeric" MaxLength="8"/>
+
+                <Label Text="Dirección:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtAddress" Placeholder="Dirección" Margin="50,0,50,0" />
+
+                <Button x:Name="BtnAction" Text="Guardar" Margin="80,30,80,0" CornerRadius="20" Clicked="BtnAction_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
+
+                <Label 
+                    Text="Cambio de Contraseña"
+                    FontSize="Medium"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="CenterAndExpand" 
+                    Margin="50,50,50,0" 
+                    FontAttributes="Bold"
+                    TextColor="#1c0d5e"/>
+
+                <Label Text="Antigua Contraseña:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtPassword" Placeholder="Antigua Contraseña" IsPassword="True" Margin="50,0,50,0" />
+
+                <Label Text="Nueva Contraseña:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtPasswordRepeat" Placeholder="Nueva Contraseña" IsPassword="True" Margin="50,0,50,0" />
+                <Image 
+                       x:Name="ImgProfile"
+                    Margin="50,30,50,0"
+                       Source="eye.png" 
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       HorizontalOptions="Center"
+                       xct:IconTintColorEffect.TintColor="#1c0d5e"
+                       >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                                Tapped="TapGestureRecognizer_Tapped"
+                                NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                
+                <Button x:Name="BtnUpdatePassword" Text="Cambiar" Margin="100,30,100,50" CornerRadius="20" Clicked="BtnUpdatePassword_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

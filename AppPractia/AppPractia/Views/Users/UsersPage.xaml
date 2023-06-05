@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPractia.Views.Users.UsersPage"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Image 
+                       Source="list.png" 
+                       Margin="50,50,50,0"
+                       HeightRequest="40"
+                       xct:IconTintColorEffect.TintColor="#1c0d5e"
+                       HorizontalOptions="Center"
+                       >
+                </Image>
+
+                <Label 
+                    Text="Mantenimiento de Usuarios"
+                    VerticalOptions="Start" 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand" 
+                    FontAttributes="Bold"
+                     TextColor="#1c0d5e"
+                    Margin="50,0,50,0"/>
+
+
+                <Label Text="Identificación:" Margin="55,50,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtIdentification" Placeholder="identificación" Keyboard="Numeric" Margin="50,0,50,0" MaxLength="9"/>
+
+                <Label Text="Email:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtEmail" Placeholder="Email" Margin="50,0,50,0" Keyboard="Email" />
+
+                <Label Text="Nombre:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtName" Placeholder="Nombre" Margin="50,0,50,0"/>
+
+                <Label Text="Teléfono:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtPhoneNumber" Placeholder="Teléfono" Margin="50,0,50,0" Keyboard="Numeric" MaxLength="8"/>
+
+                <Label Text="Dirección:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtAddress" Placeholder="Dirección" Margin="50,0,50,0" />
+
+                <Label Text="Rol de Usuario:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Picker x:Name="PckrUserRole" Title="Rol de Usuario" Margin="50,0,50,0" ItemDisplayBinding="{Binding Name}"/>
+
+                <Label x:Name="LblHintPassword" Text="*Los nuevos usuarios tienen por defecto la contraseña: Asp128..M" Margin="55,10,50,0" TextColor="#1c0d5e"/>
+
+                <StackLayout Orientation="Vertical" Margin="0,50,0,50">
+                    <Button x:Name="BtnAction" Text="Guardar" Margin="80,0,80,0" CornerRadius="20" Clicked="BtnAction_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
+                    <Button x:Name="BtnActionDelete" Text="Eliminar" Margin="100,15,100,0" CornerRadius="20" Clicked="BtnActionDelete_Clicked" BackgroundColor="#1c0d5e" TextColor="White" IsVisible="false"/>
+                    <Button x:Name="BtnResetPassword" Text="Restaurar Contraseña" FontSize="12" Margin="100,15,100,0" CornerRadius="20" Clicked="BtnResetPassword_Clicked" BackgroundColor="White" TextColor="#1c0d5e" IsVisible="false"/>
+                </StackLayout>
+                
+               
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
