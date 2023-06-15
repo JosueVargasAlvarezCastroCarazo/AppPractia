@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPractia.Views.Projects.ProjectsPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" x:Name="ProjectMenuContainer" IsVisible="false" Margin="25,25,25,0">
+
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Image 
+                           Source="wood.png" 
+                           HeightRequest="50"
+                           WidthRequest="50"
+                           xct:IconTintColorEffect.TintColor="#1c0d5e"
+                           >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                        Tapped="TapGestureRecognizer_Tapped_1"
+                                        NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Material" TextColor="#1c0d5e" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                        <Label Text="Cuadrilla" TextColor="#1c0d5e" VerticalOptions="Center"/>
+                        <Image 
+                           Source="people.png" 
+                           HeightRequest="40"
+                           WidthRequest="40"
+                           xct:IconTintColorEffect.TintColor="#1c0d5e"
+                           >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                        Tapped="TapGestureRecognizer_Tapped"
+                                        NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+
+                   
+
+                </StackLayout>
+
+                <Image 
+                       Source="list.png" 
+                       Margin="50,50,50,0"
+                       HeightRequest="40"
+                       xct:IconTintColorEffect.TintColor="#1c0d5e"
+                       HorizontalOptions="Center"
+                       >
+                </Image>
+
+                <Label 
+                    Text="Mantenimiento de Proyectos"
+                    VerticalOptions="Start" 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand" 
+                    FontAttributes="Bold"
+                     TextColor="#1c0d5e"
+                    Margin="50,0,50,0"/>
+
+
+                <Label Text="Nombre:" Margin="55,50,50,0" TextColor="#1c0d5e"/>
+                <Entry x:Name="TxtName" Placeholder="Nombre"  Margin="50,0,50,0" />
+
+                <Label Text="Estado de Proyecto:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Picker x:Name="PckrStatus" Title="Estado de Proyecto" Margin="50,0,50,0" ItemDisplayBinding="{Binding Name}"/>
+
+                <Label Text="Encargado:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                
+                <StackLayout Margin="50,0,50,0" Orientation="Horizontal">
+
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="TxtAdministrator" Placeholder="Encargado" Margin="0,0,10,0" HorizontalOptions="FillAndExpand" Text="" IsEnabled="false">
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Property="TextColor" Value="black" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                        </Entry>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                            Tapped="TapGestureRecognizer_Tapped_3"
+                            NumberOfTapsRequired="1">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    
+
+                    <Image 
+                       Source="information.png" 
+                       HeightRequest="25"
+                       WidthRequest="25"
+                       xct:IconTintColorEffect.TintColor="#1c0d5e"
+                       >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TapGestureRecognizer_Tapped_2"
+                                NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </StackLayout>
+
+                <Label Text="Descripción:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
+                <Editor x:Name="TxtDescrìption" Placeholder="Descripciòn" Margin="50,0,50,0" HeightRequest="150" />
+
+                <StackLayout Orientation="Vertical" Margin="0,50,0,50">
+                    <Button x:Name="BtnAction" Text="Guardar" Margin="80,0,80,0" CornerRadius="20" Clicked="BtnAction_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
+                    <Button x:Name="BtnActionDelete" Text="Eliminar" Margin="100,15,100,0" CornerRadius="20" Clicked="BtnActionDelete_Clicked" BackgroundColor="#1c0d5e" TextColor="White" IsVisible="false"/>
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

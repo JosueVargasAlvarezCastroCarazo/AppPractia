@@ -1,8 +1,7 @@
 ﻿using Acr.UserDialogs;
 using AppPractia.ModelsDTOs;
 using AppPractia.ViewModels;
-using AppPractia.Views.Materials;
-using AppPractia.Views.Projects;
+using AppPractia.Views.Locations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,29 +11,22 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AppPractia.Views.Users
+namespace AppPractia.Views.Projects
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UsersListPage : ContentPage
+    public partial class ProjectsListPage : ContentPage
     {
 
-        UserViewModel ViewModel;
-        ProjectsPage Page;
-        bool SelectionMode;
-
-        public UsersListPage()
+        ProjectViewModel ViewModel;
+        public ProjectsListPage()
         {
             InitializeComponent();
-            this.BindingContext = ViewModel = new UserViewModel();
-        }
+            this.BindingContext = ViewModel = new ProjectViewModel();
 
-        public UsersListPage(ProjectsPage PageForSelect )
-        {
-            InitializeComponent();
-            this.BindingContext = ViewModel = new UserViewModel();
-            Page = PageForSelect;
-            SelectionMode = true;
-            SwitchShowDisableStack.IsVisible = false;
+            if (!Global.user.IsAdmin())
+            {
+                BtnCreate.IsVisible = false;
+            }
         }
 
         //muestra la lista cuando se enseña la pantalla
@@ -44,7 +36,7 @@ namespace AppPractia.Views.Users
             {
 
                 UserDialogs.Instance.ShowLoading("Cargando..");
-                List<UserDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim());
+                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), Global.user.IsAdmin(), Global.user.UserId);
                 ListPage.ItemsSource = list;
 
             }
@@ -63,9 +55,11 @@ namespace AppPractia.Views.Users
         {
             try
             {
+
                 UserDialogs.Instance.ShowLoading("Cargando..");
-                List<UserDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim());
+                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), Global.user.UserRolId == 1 ? true : false, Global.user.UserId);
                 ListPage.ItemsSource = list;
+
             }
             catch (Exception)
             {
@@ -80,30 +74,18 @@ namespace AppPractia.Views.Users
 
         private async void BtnCreate_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UsersPage());
-        }
-
-        private async void ListPage_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
-            if (SelectionMode)
-            {
-                Page.SelectedUser = (ListPage.SelectedItem as UserDTO);
-                await this.Navigation.PopAsync();
-            }
-            else
-            {
-                await this.Navigation.PushAsync(new UsersPage((ListPage.SelectedItem as UserDTO), false));
-            }
+            await Navigation.PushAsync(new ProjectsPage());
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             try
             {
+
                 UserDialogs.Instance.ShowLoading("Cargando..");
-                List<UserDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim());
+                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), Global.user.UserRolId == 1 ? true : false, Global.user.UserId);
                 ListPage.ItemsSource = list;
+
             }
             catch (Exception)
             {
@@ -116,5 +98,9 @@ namespace AppPractia.Views.Users
             }
         }
 
+        private async void ListPage_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await this.Navigation.PushAsync(new ProjectsPage((ListPage.SelectedItem as ProjectDTO)));
+        }
     }
 }

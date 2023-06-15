@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppPractia.Views.Users.UsersListPage"
+             x:Class="AppPractia.Views.Projects.ProjectsListPage"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout x:Name="SwitchShowDisableStack" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Margin="80,10,10,0">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Margin="80,10,10,0">
                 <Label 
                     Text="Ver Inactivos"
                     VerticalOptions="Center"
@@ -23,7 +23,7 @@
             </Image>
 
             <Label 
-                    Text="-Lista de Usuarios-"
+                    Text="-Lista de Proyectos-"
                     VerticalOptions="Start" 
                     FontSize="Medium"
                     HorizontalOptions="CenterAndExpand" 
@@ -33,7 +33,7 @@
 
             <Button x:Name="BtnCreate" HeightRequest="50" Text="Crear Nuevo" Margin="80,30,80,0" CornerRadius="30" Clicked="BtnCreate_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
 
-           
+
             <StackLayout Margin="50,40,50,0" Orientation="Horizontal">
 
                 <Entry x:Name="TxtSearch" Placeholder="Buscar" Margin="0,0,10,0" HorizontalOptions="FillAndExpand" Text=""/>
@@ -58,14 +58,10 @@
                 <ListView.ItemTemplate>
                     <DataTemplate >
                         <ViewCell >
-                            <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                            <StackLayout Orientation="Vertical" VerticalOptions="Start" >
                                 <StackLayout Orientation="Vertical" VerticalOptions="Start">
-                                    <Label Text="Identificación:"  Margin="0,10,10,0"  TextColor="#1c0d5e"/>
-                                    <Label Text="{Binding Identification}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical" VerticalOptions="Start">
-                                    <Label Text="Nombre:"  Margin="0,10,10,0"  TextColor="#1c0d5e"/>
-                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding Name}" Margin="0,10,10,0"  TextColor="#1c0d5e"/>
+                                    <Label Text="{Binding Description}" MaxLines="1"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

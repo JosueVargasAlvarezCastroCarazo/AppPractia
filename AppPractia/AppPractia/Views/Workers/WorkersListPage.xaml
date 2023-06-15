@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPractia.Views.Workers.WorkersListPage" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Image 
+                       Source="list.png" 
+                       Margin="50,50,50,0"
+                       HeightRequest="50"
+                       xct:IconTintColorEffect.TintColor="#1c0d5e"
+                       HorizontalOptions="Center"
+                       >
+            </Image>
+
+            <Label 
+                    Text="-Lista de Cuadrilla de Proyecto-"
+                    VerticalOptions="Start" 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand" 
+                    Margin="50,0,50,0"
+                    FontAttributes="Bold"
+                    TextColor="#1c0d5e"/>
+
+            <Button x:Name="BtnCreate" HeightRequest="50" Text="Agregar Nuevo" Margin="80,30,80,0" CornerRadius="30" Clicked="BtnCreate_Clicked" BackgroundColor="#1c0d5e" TextColor="White"/>
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" x:Name="ProjectMenuContainer" Margin="25,25,25,0">
+
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Image 
+        
+                        Source="trash.png" 
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        xct:IconTintColorEffect.TintColor="#1c0d5e"
+                        VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                            Tapped="TapGestureRecognizer_Tapped"
+                            NumberOfTapsRequired="1" /> 
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Eliminar" TextColor="#1c0d5e" VerticalOptions="Center"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                    <Label Text="Ver" TextColor="#1c0d5e" VerticalOptions="Center"/>
+                    <Image 
+                    
+                        Source="eye.png" 
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        xct:IconTintColorEffect.TintColor="#1c0d5e"
+                        VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TapGestureRecognizer_Tapped_1"
+                                NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+
+
+            </StackLayout>
+
+
+          
+
+            <ListView x:Name="ListPage"  RowHeight="70" Margin="50,25,50,0" ItemTapped="ListPage_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Start" >
+                                <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding User.Identification}" Margin="0,10,10,0"  TextColor="#1c0d5e"/>
+                                    <Label Text="{Binding User.Name}" MaxLines="1"/>
+                                </StackLayout>
+                               
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

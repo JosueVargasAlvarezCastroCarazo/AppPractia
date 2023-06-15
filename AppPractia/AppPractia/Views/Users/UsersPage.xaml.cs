@@ -31,7 +31,7 @@ namespace AppPractia.Views.Users
         }
 
         //carga un Elemento para editarlo o eliminarlo
-        public UsersPage(UserDTO currentItem)
+        public UsersPage(UserDTO currentItem,bool watchMode)
         {
             InitializeComponent();
             this.CurrentItem = currentItem;
@@ -45,7 +45,9 @@ namespace AppPractia.Views.Users
             TxtPhoneNumber.Text = currentItem.PhoneNumber;
             TxtAddress.Text = currentItem.Address;
             TxtEmail.Text = currentItem.Email;
-            
+
+            LblHintPassword.IsVisible = false;
+
             BtnActionDelete.IsVisible = true;
             BtnResetPassword.IsVisible = true;
 
@@ -56,6 +58,20 @@ namespace AppPractia.Views.Users
             else
             {
                 BtnActionDelete.Text = "Restaurar";
+            }
+
+            if (watchMode)
+            {
+                TxtIdentification.IsReadOnly = true;
+                TxtName.IsReadOnly = true;
+                TxtPhoneNumber.IsReadOnly = true;
+                TxtAddress.IsReadOnly = true;
+                TxtEmail.IsReadOnly = true;
+                PckrUserRole.IsEnabled = false;
+                BtnActionDelete.IsVisible = false;
+                BtnAction.IsVisible = false;
+                BtnResetPassword.IsVisible = false;
+                
             }
 
         }
@@ -81,12 +97,12 @@ namespace AppPractia.Views.Users
             else
             {
                 if (
-              (TxtIdentification.Text != null && !string.IsNullOrEmpty(TxtIdentification.Text.Trim())) &&
-              (TxtName.Text != null && !string.IsNullOrEmpty(TxtName.Text.Trim())) &&
-              (TxtPhoneNumber.Text != null && !string.IsNullOrEmpty(TxtPhoneNumber.Text.Trim())) &&
-              (TxtAddress.Text != null && !string.IsNullOrEmpty(TxtAddress.Text.Trim())) &&
-              (TxtEmail.Text != null && !string.IsNullOrEmpty(TxtEmail.Text.Trim())) &&
-                PckrUserRole.SelectedItem != null
+                    (TxtIdentification.Text != null && !string.IsNullOrEmpty(TxtIdentification.Text.Trim())) &&
+                    (TxtName.Text != null && !string.IsNullOrEmpty(TxtName.Text.Trim())) &&
+                    (TxtPhoneNumber.Text != null && !string.IsNullOrEmpty(TxtPhoneNumber.Text.Trim())) &&
+                    (TxtAddress.Text != null && !string.IsNullOrEmpty(TxtAddress.Text.Trim())) &&
+                    (TxtEmail.Text != null && !string.IsNullOrEmpty(TxtEmail.Text.Trim())) &&
+                    PckrUserRole.SelectedItem != null
               )
                 {
 
@@ -96,10 +112,12 @@ namespace AppPractia.Views.Users
 
                         bool R = true;
 
+                        UserDTO checkIdentificationUser = await ViewModel.CheckIdentification(TxtIdentification.Text.Trim());
+
                         if (CurrentItem != null)
                         {
 
-                            if ((await ViewModel.CheckIdentification(TxtIdentification.Text.Trim())).UserId != CurrentItem.UserId)
+                            if (checkIdentificationUser.Identification != null && checkIdentificationUser.UserId != CurrentItem.UserId)
                             {
                                 await DisplayAlert("Atención", "Esta identificación ya esta registrada", "Aceptar");
                                 return;
@@ -127,14 +145,14 @@ namespace AppPractia.Views.Users
                             }
 
                             R = await ViewModel.CreateAccount(
-                            TxtIdentification.Text.Trim(),
-                            TxtEmail.Text.Trim(),
-                            TxtName.Text.Trim(),
-                            TxtPhoneNumber.Text.Trim(),
-                            TxtAddress.Text.Trim(),
-                            "Asp128..M",
-                            true,
-                            (PckrUserRole.SelectedItem as UserRolDTO).UserRolId
+                                TxtIdentification.Text.Trim(),
+                                TxtEmail.Text.Trim(),
+                                TxtName.Text.Trim(),
+                                TxtPhoneNumber.Text.Trim(),
+                                TxtAddress.Text.Trim(),
+                                "Asp128..M",
+                                true,
+                                (PckrUserRole.SelectedItem as UserRolDTO).UserRolId
                             );
                         }
 

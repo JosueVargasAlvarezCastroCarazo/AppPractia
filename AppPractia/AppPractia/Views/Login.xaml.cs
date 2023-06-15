@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,10 +18,70 @@ namespace AppPractia.Views
 
         UserViewModel userViewModel;
 
+        int screenCount = 0;
+
         public Login ()
 		{
 			InitializeComponent ();
             this.BindingContext = userViewModel = new UserViewModel();
+
+
+            if (Preferences.ContainsKey("user"))
+            {
+                AutoLogin();
+            }
+
+        }
+
+        protected async override void OnAppearing()
+        {
+            screenCount++;
+
+            if (screenCount > 1)
+            {
+                Preferences.Clear();
+            }
+        }
+
+        
+        private async void AutoLogin()
+        {
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Cargando..");
+                UserDTO R = await userViewModel.ValidateLogin(Preferences.Get("user", "default_value"), Preferences.Get("password", "default_value"));
+
+                if (R.UserId > 0)
+                {
+
+                    if ((bool)R.Active)
+                    {
+                        Global.user = R;
+                        await this.Navigation.PushAsync(new Main());
+
+                    }
+                    else
+                    {
+                        await DisplayAlert("Atención", "Usuario desactivado", "Aceptar");
+                    }
+
+
+                }
+                else
+                {
+                    await DisplayAlert("Atención", "Usuario no Encontrado", "Aceptar");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                UserDialogs.Instance.HideLoading();
+            }
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -48,6 +108,8 @@ namespace AppPractia.Views
                             if ((bool)R.Active)
                             {
                                 Global.user = R;
+                                Preferences.Set("user", TxtIdentificación.Text.Trim());
+                                Preferences.Set("password", TxtPassword.Text.Trim());
                                 await this.Navigation.PushAsync(new Main());
 
                             }

@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using AppPractia.ModelsDTOs;
 using AppPractia.Tools;
 using AppPractia.ViewModels;
 using System;
@@ -46,6 +47,17 @@ namespace AppPractia.Views
                 try
                 {
                     UserDialogs.Instance.ShowLoading("Cargando..");
+
+
+                    UserDTO checkIdentificationUser = await userViewModel.CheckIdentification(TxtIdentification.Text.Trim());
+
+                    if (checkIdentificationUser.Identification != null && checkIdentificationUser.UserId != Global.user.UserId)
+                    {
+                        await DisplayAlert("Atención", "Esta identificación ya esta registrada", "Aceptar");
+                        return;
+                    }
+
+
                     bool R = await userViewModel.UpdateProfile(
                         Global.user.UserId,
                         TxtIdentification.Text.Trim(),
@@ -57,7 +69,6 @@ namespace AppPractia.Views
                         Global.user.Active,
                         Global.user.UserRolId
                         );
-
                     if (R)
                     {
                         Global.user.Name = TxtName.Text.Trim();

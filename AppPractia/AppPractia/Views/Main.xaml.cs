@@ -1,10 +1,12 @@
-﻿using AppPractia.Views.Users;
+﻿using AppPractia.Views.Locations;
+using AppPractia.Views.Projects;
+using AppPractia.Views.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +19,7 @@ namespace AppPractia.Views
 		{
 			InitializeComponent ();
 
-            if (Global.user.UserRolId == 2)
+            if (!Global.user.IsAdmin())
             {
                 BtnUsers.IsVisible = false;
             }
@@ -40,14 +42,17 @@ namespace AppPractia.Views
             await this.Navigation.PushAsync(new UsersListPage());
         }
 
-        private void BtnProyects_Clicked(object sender, EventArgs e)
+        private async void BtnProyects_Clicked(object sender, EventArgs e)
         {
-
+            await this.Navigation.PushAsync(new ProjectsListPage());
         }
 
-        private void BtnLocations_Clicked(object sender, EventArgs e)
+        private async void BtnLocations_Clicked(object sender, EventArgs e)
         {
-
+            await this.Navigation.PushAsync(new LocationsListPage());
         }
+
+
+
     }
 }

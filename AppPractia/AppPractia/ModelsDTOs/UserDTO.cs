@@ -32,7 +32,13 @@ namespace AppPractia.ModelsDTOs
         public string RolName { get; set; }
 
 
-
+        public bool IsAdmin()
+        {
+            if(UserRolId == 1){
+                return true;
+            }
+            return false;
+        }
 
         //hace login y trae un usuario
         public async Task<UserDTO> ValidateLogin()
