@@ -22,12 +22,14 @@ namespace AppPractia.Views.Users
         ProjectsPage Page;
         bool SelectionMode;
 
+        //entrada inicial a la lista de usuarios
         public UsersListPage()
         {
             InitializeComponent();
             this.BindingContext = ViewModel = new UserViewModel();
         }
 
+        //entrada desde la pagina de proyecto para seleccionar el administrador
         public UsersListPage(ProjectsPage PageForSelect )
         {
             InitializeComponent();
@@ -59,6 +61,8 @@ namespace AppPractia.Views.Users
             }
         }
 
+        //filtra la lista entre activos y inactivos
+
         private async void SwitchShowDisable_Toggled(object sender, ToggledEventArgs e)
         {
             try
@@ -78,11 +82,13 @@ namespace AppPractia.Views.Users
             }
         }
 
+        //va a la pantalla de crear nuevo usuario
         private async void BtnCreate_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new UsersPage());
         }
 
+        //accion al toca un item de la lista
         private async void ListPage_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 
@@ -97,6 +103,7 @@ namespace AppPractia.Views.Users
             }
         }
 
+        //boton de buscar que filtra la lista
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             try

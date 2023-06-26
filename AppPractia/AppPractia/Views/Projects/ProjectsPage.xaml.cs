@@ -23,6 +23,7 @@ namespace AppPractia.Views.Projects
         List<ConstructionStatusDTO> StatusList;
         public UserDTO SelectedUser;
 
+        //entrada general de pantalla de proyecto
         public ProjectsPage()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace AppPractia.Views.Projects
             getInitialList();
         }
 
+        //entrada con un proyecto para actualizarlo
         public ProjectsPage(ProjectDTO currentItem)
         {
             InitializeComponent();
@@ -57,6 +59,7 @@ namespace AppPractia.Views.Projects
 
         }
 
+        //trae el estado del proyecto y lo carga
         private async void getInitialList()
         {
             StatusList = await ViewModel.GetProjectStatusList();
@@ -75,6 +78,7 @@ namespace AppPractia.Views.Projects
         }
 
 
+        //actualiza el administrador del proyecto
         protected async override void OnAppearing()
         {
             if (SelectedUser != null)
@@ -83,6 +87,8 @@ namespace AppPractia.Views.Projects
             }
         }
 
+
+        // crea o actualiza un proyecto
         private async void BtnAction_Clicked(object sender, EventArgs e)
         {
             if (
@@ -152,6 +158,8 @@ namespace AppPractia.Views.Projects
             }
         }
 
+
+        //elimina o restaura un proyecto
         private async void BtnActionDelete_Clicked(object sender, EventArgs e)
         {
             if (

@@ -24,7 +24,7 @@ namespace AppPractia.ModelsDTOs
         public bool? Active { get; set; }
 
 
-        //trae una lista de elementos
+        //trae una lista de elementos de roles de usuario
         public async Task<List<UserRolDTO>> GetList()
         {
             try

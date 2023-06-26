@@ -22,6 +22,7 @@ namespace AppPractia.Views.Materials
         public LocationDTO SelectedLocation;
         MaterialViewModel ViewModel;
 
+        //entrada de material que recibe un id de proyecto
         public MaterialsPage(int projectId)
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace AppPractia.Views.Materials
             this.BindingContext = ViewModel = new MaterialViewModel();
         }
 
+        //entrada para actualizar un material
         public MaterialsPage(MaterialDTO material, int projectId)
         {
             InitializeComponent();
@@ -57,6 +59,7 @@ namespace AppPractia.Views.Materials
             }
         }
 
+        //cuando aparece la pantalla carga la localizacion
         protected async override void OnAppearing()
         {
             if (SelectedLocation!= null)
@@ -65,11 +68,13 @@ namespace AppPractia.Views.Materials
             }
         }
 
+        //va a la pantalla de localizaciones para seleccionar uno
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LocationsListPage(this));
         }
 
+        //guarda o actualiza un material
         private async void BtnAction_Clicked(object sender, EventArgs e)
         {
             if (
@@ -169,6 +174,7 @@ namespace AppPractia.Views.Materials
             }
         }
 
+        //elimina o restaura un material
         private async void BtnActionDelete_Clicked(object sender, EventArgs e)
         {
             if (
@@ -237,6 +243,7 @@ namespace AppPractia.Views.Materials
             }
         }
 
+        //reduce en 1 la cantidad de materiales
         private void BtnMinus_Clicked(object sender, EventArgs e)
         {
             if (int.Parse(TxtAmount.Text) > 0)
@@ -246,11 +253,14 @@ namespace AppPractia.Views.Materials
            
         }
 
+        //aumenta en 1 la cantidad de materiales
         private void BtnPlus_Clicked(object sender, EventArgs e)
         {
             TxtAmount.Text = (int.Parse(TxtAmount.Text) + 1) + "";
         }
 
+
+        //metodos que modifican la cantidad de materiales en una cantidad especifica
         private void BtnFive_Clicked(object sender, EventArgs e)
         {
             TxtAmount.Text = 5 + "";

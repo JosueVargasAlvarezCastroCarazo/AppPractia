@@ -62,7 +62,7 @@ namespace AppPractia.ViewModels
         }
 
 
-        //actualiza un nuevo proyecto
+        //actualiza un proyecto
         public async Task<bool> Update(
             int id,
             string name,
@@ -139,7 +139,7 @@ namespace AppPractia.ViewModels
         }
 
 
-        //retorna una lista de elementos
+        //retorna una lista de elementos de estatus de proyecto
         public async Task<List<ConstructionStatusDTO>> GetProjectStatusList()
         {
 

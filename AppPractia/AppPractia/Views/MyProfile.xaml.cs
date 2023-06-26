@@ -18,6 +18,7 @@ namespace AppPractia.Views
 	{
 
         UserViewModel userViewModel;
+        //pantalla de entrada a a mi perfil
         public MyProfile ()
 		{
 			InitializeComponent ();
@@ -31,6 +32,7 @@ namespace AppPractia.Views
             TxtEmail.Text = Global.user.Email;
         }
 
+        //actualiza el perfil con los cambios realizados
         private async void BtnAction_Clicked(object sender, EventArgs e)
         {
             if (
@@ -100,12 +102,14 @@ namespace AppPractia.Views
             }
         }
 
+        //muestra y esconde la contraseña
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             TxtPassword.IsPassword = !TxtPassword.IsPassword;
             TxtPasswordRepeat.IsPassword = !TxtPasswordRepeat.IsPassword;
         }
 
+        //actualiza la contraseña
         private async void BtnUpdatePassword_Clicked(object sender, EventArgs e)
         {
             if (

@@ -25,7 +25,7 @@ namespace AppPractia.ModelsDTOs
 
         public UserDTO User { get; set; }
 
-        //crea una nueva localizacion
+        //crea un nuevo elemento de cuadrilla
         public async Task<bool> Create()
         {
             try
@@ -68,7 +68,7 @@ namespace AppPractia.ModelsDTOs
             }
         }
 
-
+        //elimina un elemento de cuadrilla
         public async Task<bool> Delete()
         {
             try
@@ -112,7 +112,7 @@ namespace AppPractia.ModelsDTOs
         }
 
 
-        //trae una lista de Trabajadores
+        //trae una lista de Trabajadores segun el proyecto
         public async Task<List<UserConstructionDTO>> GetList(int project)
         {
             try

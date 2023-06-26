@@ -20,7 +20,7 @@ namespace AppPractia.ViewModels
         }
 
 
-        //retorna una lista de elementos
+        //retorna una lista de elementos de material
         public async Task<List<MaterialDTO>> GetList(
             bool active, string search, int project
         )
@@ -52,7 +52,7 @@ namespace AppPractia.ViewModels
 
         }
 
-        //crea una una nueva localizacion
+        //crea un nuevo material
         public async Task<bool> Create(
             string Name,
             string Description,
@@ -99,7 +99,7 @@ namespace AppPractia.ViewModels
         }
 
 
-        //crea una una nueva localizacion
+        //actualiza un material
         public async Task<bool> Update(
             int MaterialId,
             string Name,

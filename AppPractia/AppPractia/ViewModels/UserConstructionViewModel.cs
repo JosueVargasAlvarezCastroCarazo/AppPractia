@@ -18,7 +18,7 @@ namespace AppPractia.ViewModels
         }
 
 
-        //retorna una lista de elementos
+        //retorna una lista de elementos de cuadrilla de proyecto
         public async Task<List<UserConstructionDTO>> GetList(int project)
         {
 
@@ -49,7 +49,7 @@ namespace AppPractia.ViewModels
         }
 
 
-
+        // elimina un elemento de cuadrilla
         public async Task<bool> Delete(
            int id
            )
@@ -83,7 +83,7 @@ namespace AppPractia.ViewModels
         }
 
 
-
+        //crea un nuevo elemento de la cuadrilla
         public async Task<bool> Create(
            int userId,
            int projectId

@@ -21,6 +21,8 @@ namespace AppPractia.Views.Workers
         UserConstructionViewModel ViewModel;
         private int project = 0;
 
+
+        //pantalla de entrada a la cuadrilla de un proyecto
         public WorkersListPage(int projectId)
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace AppPractia.Views.Workers
             }
         }
 
+        //va a agregar un nuevo trabajador a la cuadrilla
         private async void BtnCreate_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new WorkersPage(project));
@@ -61,6 +64,7 @@ namespace AppPractia.Views.Workers
             
         }
 
+        //elimina un trabajador de la cuadrilla
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             try
@@ -107,6 +111,7 @@ namespace AppPractia.Views.Workers
             }
         }
 
+        //visualiza un trabajador de la cuadrilla
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
             try

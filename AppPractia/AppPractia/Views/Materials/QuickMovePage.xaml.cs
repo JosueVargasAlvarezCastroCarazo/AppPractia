@@ -21,12 +21,15 @@ namespace AppPractia.Views.Materials
         public LocationDTO SelectedLocation;
         MaterialViewModel ViewModel;
 
+        //entrada general que recibe el id de proyecto necesario
         public QuickMovePage(int projectId)
         {
             InitializeComponent();
             project = projectId;
             this.BindingContext = ViewModel = new MaterialViewModel();
         }
+
+        //carga los materiales una vez que la localizacion fuera seleccionada
 
         protected async override void OnAppearing()
         {
@@ -53,11 +56,13 @@ namespace AppPractia.Views.Materials
             }
         }
 
+        //va a la pantalla de seleccionar localizacion
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LocationsListPage(this));
         }
 
+        //actualiza la localizacion del material seleccionado
         private async void ListPage_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 

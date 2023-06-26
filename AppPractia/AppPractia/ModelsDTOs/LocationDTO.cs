@@ -123,7 +123,7 @@ namespace AppPractia.ModelsDTOs
         }
 
 
-        //Actualiza una nueva localizacion
+        //Actualiza una localizacion
         public async Task<bool> Update()
         {
             try

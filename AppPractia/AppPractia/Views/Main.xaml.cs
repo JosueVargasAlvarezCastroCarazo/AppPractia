@@ -19,6 +19,7 @@ namespace AppPractia.Views
 		{
 			InitializeComponent ();
 
+            //filtra las elecciones si es admin
             if (!Global.user.IsAdmin())
             {
                 BtnUsers.IsVisible = false;
@@ -32,6 +33,7 @@ namespace AppPractia.Views
             TxtUserWelcome.Text = "Bienvenido " + Global.user.Name;
         }
 
+        //acciones de navegacion a las otras pantallas
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await this.Navigation.PushAsync(new MyProfile());

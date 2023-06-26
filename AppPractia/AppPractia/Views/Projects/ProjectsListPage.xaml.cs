@@ -18,6 +18,8 @@ namespace AppPractia.Views.Projects
     {
 
         ProjectViewModel ViewModel;
+
+        //entrada general a pantalla de lista de proyectos
         public ProjectsListPage()
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace AppPractia.Views.Projects
             }
         }
 
+        //filtra la lista por proyectos activos y inactivos
         private async void SwitchShowDisable_Toggled(object sender, ToggledEventArgs e)
         {
             try
@@ -72,11 +75,13 @@ namespace AppPractia.Views.Projects
             }
         }
 
+        //va a crear un nuevo proyecto
         private async void BtnCreate_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProjectsPage());
         }
 
+        //busca en la lista de proyectos
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             try
@@ -98,6 +103,8 @@ namespace AppPractia.Views.Projects
             }
         }
 
+
+        // va a la lista de proyecto a actualizar el elemento
         private async void ListPage_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             await this.Navigation.PushAsync(new ProjectsPage((ListPage.SelectedItem as ProjectDTO)));

@@ -23,12 +23,14 @@ namespace AppPractia.Views.Locations
         QuickMovePage MovePage;
         bool SelectionMode;
 
+        //entrada general
         public LocationsListPage()
         {
             InitializeComponent();
             this.BindingContext = ViewModel = new LocationViewModel();
         }
 
+        //modo seleccion para retornar a la pantalla de material
         public LocationsListPage(MaterialsPage PageMaterial)
         {
             InitializeComponent();
@@ -39,6 +41,7 @@ namespace AppPractia.Views.Locations
             SwitchShowDisableLabel.IsVisible = false;
         }
 
+        //modo selccion para retornar a la pantalla de movimiento rapido
         public LocationsListPage(QuickMovePage Page)
         {
             InitializeComponent();
@@ -72,6 +75,7 @@ namespace AppPractia.Views.Locations
             }
         }
 
+        //cambia entre materiales activos y inactivos
         private async void SwitchShowDisable_Toggled(object sender, ToggledEventArgs e)
         {
             try
@@ -91,11 +95,13 @@ namespace AppPractia.Views.Locations
             }
         }
 
+        //va a la pantalla de crear nueva localizacion
         private async void BtnCreate_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LocationsPage());
         }
 
+        //boton de busqueda para filtrar lista
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             try
@@ -115,6 +121,7 @@ namespace AppPractia.Views.Locations
             }
         }
 
+        //accion al tocar cuando se toca un item de la lista
         private async void ListPage_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 

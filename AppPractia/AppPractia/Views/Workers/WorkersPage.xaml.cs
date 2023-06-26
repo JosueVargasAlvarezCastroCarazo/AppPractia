@@ -20,6 +20,7 @@ namespace AppPractia.Views.Workers
         UserConstructionViewModel ViewModelGroup;
         private int project = 0;
 
+        //pantalla de entrada de trabajador
         public WorkersPage(int projectId)
         {
             InitializeComponent();
@@ -50,6 +51,7 @@ namespace AppPractia.Views.Workers
             }
         }
 
+        //agrega un nuevo trabajador a la cuadrilla
         private async void ListPage_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             try
@@ -93,6 +95,7 @@ namespace AppPractia.Views.Workers
             }
         }
 
+        //filtra la lista
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             try

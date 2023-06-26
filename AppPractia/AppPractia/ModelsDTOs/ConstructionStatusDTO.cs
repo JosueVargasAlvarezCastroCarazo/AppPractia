@@ -25,7 +25,7 @@ namespace AppPractia.ModelsDTOs
 
 
 
-        //trae una lista de elementos
+        //trae una lista de elementos de estados de proyecto
         public async Task<List<ConstructionStatusDTO>> GetList()
         {
             try

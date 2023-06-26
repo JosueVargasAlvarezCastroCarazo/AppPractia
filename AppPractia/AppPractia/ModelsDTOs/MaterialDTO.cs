@@ -32,7 +32,7 @@ namespace AppPractia.ModelsDTOs
 
 
 
-        //trae una lista de proyectos
+        //trae una lista de materiales con parametro de busqueda opcional
         public async Task<List<MaterialDTO>> GetList(bool active, string search, int project)
         {
             try

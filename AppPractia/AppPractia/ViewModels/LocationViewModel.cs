@@ -56,7 +56,7 @@ namespace AppPractia.ViewModels
         }
 
 
-        //crea una una nueva localizacion
+        //actualiza una localizacion
         public async Task<bool> Update(
             int id,
             string name,

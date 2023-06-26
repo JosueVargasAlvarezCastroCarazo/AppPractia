@@ -17,7 +17,7 @@ namespace AppPractia.ViewModels
         }
 
 
-        //retorna una lista de elementos
+        //retorna una lista de elementos de rol de usuario
         public async Task<List<UserRolDTO>> GetList()
         {
 

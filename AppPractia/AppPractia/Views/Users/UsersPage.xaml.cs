@@ -22,6 +22,7 @@ namespace AppPractia.Views.Users
         UserRolViewModel UserRolViewModel;
         List<UserRolDTO> UserRolList;
 
+        //entrada de la pantalla de usuario
         public UsersPage()
         {
             InitializeComponent();
@@ -76,6 +77,7 @@ namespace AppPractia.Views.Users
 
         }
 
+        //trae los roles iniciales del usuario
         private async void getInitialList()
         {
             UserRolList = await UserRolViewModel.GetList();
@@ -88,6 +90,8 @@ namespace AppPractia.Views.Users
 
         }
 
+
+        //actualiza la informacion del perfil o crea uno nuevo
         private async void BtnAction_Clicked(object sender, EventArgs e)
         {
             if (CurrentItem != null && CurrentItem.UserId == Global.user.UserId)
@@ -185,6 +189,8 @@ namespace AppPractia.Views.Users
             }
         }
 
+
+        //elimina o restaura un perfil
         private async void BtnActionDelete_Clicked(object sender, EventArgs e)
         {
             if (CurrentItem.UserId == Global.user.UserId)
@@ -249,6 +255,8 @@ namespace AppPractia.Views.Users
             }
         }
 
+
+        //cambia la contraseña a la por defecto
         private async void BtnResetPassword_Clicked(object sender, EventArgs e)
         {
             if (CurrentItem.UserId == Global.user.UserId)

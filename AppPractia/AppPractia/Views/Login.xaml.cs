@@ -20,12 +20,14 @@ namespace AppPractia.Views
 
         int screenCount = 0;
 
+        //entrada de l login
         public Login ()
 		{
 			InitializeComponent ();
             this.BindingContext = userViewModel = new UserViewModel();
 
 
+            //si hay credenciales guardades se hace autologin
             if (Preferences.ContainsKey("user"))
             {
                 AutoLogin();
@@ -33,6 +35,7 @@ namespace AppPractia.Views
 
         }
 
+        //si se vuelve atras se limpia la sesion
         protected async override void OnAppearing()
         {
             screenCount++;
@@ -43,7 +46,7 @@ namespace AppPractia.Views
             }
         }
 
-        
+        //ejecuta el autologin
         private async void AutoLogin()
         {
             try
@@ -84,11 +87,13 @@ namespace AppPractia.Views
             }
         }
 
+        //muestra y esconde la contraseña
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             TxtPassword.IsPassword = !TxtPassword.IsPassword;
         }
 
+        //ejecuta la accion de login
         private async void BtnLogin_Clicked(object sender, EventArgs e)
         {
             if (TxtIdentificación.Text != null && !string.IsNullOrEmpty(TxtIdentificación.Text.Trim()))

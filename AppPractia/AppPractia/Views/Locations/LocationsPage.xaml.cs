@@ -18,12 +18,15 @@ namespace AppPractia.Views.Locations
 
         LocationViewModel ViewModel;
         public LocationDTO CurrentItem = null;
+
+        //entrada general de localizacion
         public LocationsPage()
         {
             InitializeComponent();
             this.BindingContext = ViewModel = new LocationViewModel();
         }
 
+        //entrada cuando se desea actualizar un elemento de localizacion
         public LocationsPage(LocationDTO currentItem)
         {
             InitializeComponent();
@@ -47,6 +50,9 @@ namespace AppPractia.Views.Locations
 
         }
 
+
+
+        //boton de accion que crea o actualiza un elemento
         private async void BtnAction_Clicked(object sender, EventArgs e)
         {
             if (
@@ -110,6 +116,7 @@ namespace AppPractia.Views.Locations
             }
         }
 
+        //boton que elimina o restablece un elemento
         private async void BtnActionDelete_Clicked(object sender, EventArgs e)
         {
             if (
