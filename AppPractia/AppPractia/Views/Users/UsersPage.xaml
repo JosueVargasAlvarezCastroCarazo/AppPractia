@@ -7,6 +7,27 @@
         <ScrollView>
             <StackLayout>
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End" x:Name="ProjectMenuContainer" IsVisible="false" Margin="25,25,25,0">
+
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="Proyectos" TextColor="#1c0d5e" VerticalOptions="Center"/>
+                        <Image 
+                           Source="project.png" 
+                           HeightRequest="50"
+                           WidthRequest="50"
+                           xct:IconTintColorEffect.TintColor="#1c0d5e"
+                           >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                        Tapped="TapGestureRecognizer_Tapped"
+                                        NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+
+                </StackLayout>
+
                 <Image 
                        Source="list.png" 
                        Margin="50,50,50,0"

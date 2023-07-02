@@ -13,8 +13,8 @@ namespace AppPractia.Services
 
 
         //urls para conectar api
-        public static string ProductionUrlPrefix = "http://192.168.0.14:45455/api/";
-        public static string TestingUrlPrefix = "http://192.168.0.14:45455/api/";
+        public static string ProductionUrlPrefix = "http://192.168.0.27:45455/api/";
+        public static string TestingUrlPrefix = "http://192.168.0.27:45455/api/";
 
 
         //key de seguridad para los servicios

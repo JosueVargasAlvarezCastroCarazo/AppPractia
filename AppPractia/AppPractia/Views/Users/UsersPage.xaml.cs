@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using AppPractia.ModelsDTOs;
 using AppPractia.ViewModels;
+using AppPractia.Views.Projects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,8 +73,9 @@ namespace AppPractia.Views.Users
                 BtnActionDelete.IsVisible = false;
                 BtnAction.IsVisible = false;
                 BtnResetPassword.IsVisible = false;
-                
             }
+
+            ProjectMenuContainer.IsVisible = true;
 
         }
 
@@ -317,6 +319,12 @@ namespace AppPractia.Views.Users
                     await DisplayAlert("Atención", "Debe de ingresar todos los datos para continuar", "Aceptar");
                 }
             }
+        }
+
+        //esta funcion se utiliza para poder visualizar los proyectos en los que se encuentra un usuario como miembro de planilla
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new ProjectsListPage(CurrentItem));
         }
     }
 }

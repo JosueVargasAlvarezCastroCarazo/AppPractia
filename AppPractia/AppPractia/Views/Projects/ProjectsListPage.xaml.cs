@@ -18,12 +18,29 @@ namespace AppPractia.Views.Projects
     {
 
         ProjectViewModel ViewModel;
+        UserDTO CurrentUser;
 
         //entrada general a pantalla de lista de proyectos
         public ProjectsListPage()
         {
             InitializeComponent();
             this.BindingContext = ViewModel = new ProjectViewModel();
+
+            CurrentUser = Global.user;
+
+            if (!Global.user.IsAdmin())
+            {
+                BtnCreate.IsVisible = false;
+            }
+        }
+
+        public ProjectsListPage(UserDTO User)
+        {
+            InitializeComponent();
+            this.BindingContext = ViewModel = new ProjectViewModel();
+
+            CurrentUser = User;
+            CurrentUser.UserRolId = 2;
 
             if (!Global.user.IsAdmin())
             {
@@ -38,7 +55,7 @@ namespace AppPractia.Views.Projects
             {
 
                 UserDialogs.Instance.ShowLoading("Cargando..");
-                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), Global.user.IsAdmin(), Global.user.UserId);
+                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), CurrentUser.IsAdmin(), CurrentUser.UserId);
                 ListPage.ItemsSource = list;
 
             }
@@ -60,7 +77,7 @@ namespace AppPractia.Views.Projects
             {
 
                 UserDialogs.Instance.ShowLoading("Cargando..");
-                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), Global.user.UserRolId == 1 ? true : false, Global.user.UserId);
+                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), CurrentUser.UserRolId == 1 ? true : false, CurrentUser.UserId);
                 ListPage.ItemsSource = list;
 
             }
@@ -88,7 +105,7 @@ namespace AppPractia.Views.Projects
             {
 
                 UserDialogs.Instance.ShowLoading("Cargando..");
-                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), Global.user.UserRolId == 1 ? true : false, Global.user.UserId);
+                List<ProjectDTO> list = await ViewModel.GetList(!SwitchShowDisable.IsToggled, TxtSearch.Text.Trim(), CurrentUser.UserRolId == 1 ? true : false, CurrentUser.UserId);
                 ListPage.ItemsSource = list;
 
             }
