@@ -75,8 +75,12 @@ namespace AppPractia.Views.Users
                 BtnResetPassword.IsVisible = false;
             }
 
-            ProjectMenuContainer.IsVisible = true;
+            if (Global.user.IsAdmin())
+            {
+                ProjectMenuContainer.IsVisible = true;
+            }
 
+            
         }
 
         //trae los roles iniciales del usuario
