@@ -30,7 +30,7 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" x:Name="ProjectMenuContainer" Margin="25,25,25,0">
 
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" x:Name="DeleteContainer">
                     <Image 
         
                         Source="trash.png" 
@@ -47,7 +47,7 @@
                     <Label Text="Eliminar" TextColor="#1c0d5e" VerticalOptions="Center"/>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                     <Label Text="Ver" TextColor="#1c0d5e" VerticalOptions="Center"/>
                     <Image 
                     

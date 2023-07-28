@@ -28,6 +28,11 @@ namespace AppPractia.Views.Workers
             InitializeComponent();
             this.BindingContext = ViewModel = new UserConstructionViewModel();
             project = projectId;
+
+            if (!Global.user.IsAdmin())
+            {
+                DeleteContainer.IsVisible = false;
+            }
         }
 
 

@@ -57,6 +57,11 @@ namespace AppPractia.Views.Projects
                 BtnActionDelete.Text = "Restaurar";
             }
 
+            if (!Global.user.IsAdmin())
+            {
+                BtnActionDelete.IsVisible = false;
+            }
+
         }
 
         //trae el estado del proyecto y lo carga
