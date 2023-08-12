@@ -23,11 +23,11 @@
                     TextColor="#1c0d5e"/>
 
                 <Label Text="Identificación:" Margin="55,50,50,0" TextColor="#1c0d5e"/>
-                <Entry x:Name="TxtIdentificación" Placeholder="Identificación" Keyboard="Numeric" Margin="50,0,50,0" Text="207610379" MaxLength="9"/>
+                <Entry x:Name="TxtIdentificación" Placeholder="Identificación" Keyboard="Numeric" Margin="50,0,50,0" Text="" MaxLength="9"/>
 
                 <Label Text="Contraseña:" Margin="55,30,50,0" TextColor="#1c0d5e"/>
                 <StackLayout Margin="50,0,50,0" Orientation="Horizontal">
-                    <Entry x:Name="TxtPassword" Placeholder="Contraseña" Margin="0,0,10,0"  IsPassword="True" Text="Klapaucius1." HorizontalOptions="FillAndExpand"/>
+                    <Entry x:Name="TxtPassword" Placeholder="Contraseña" Margin="0,0,10,0"  IsPassword="True" Text="" HorizontalOptions="FillAndExpand"/>
                     <Image 
                        Source="eye.png" 
                        HeightRequest="25"
